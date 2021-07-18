@@ -22,10 +22,10 @@ class Find
     }
 
     /**
-     * @param string $term
+     * @param string|null $term
      * @return array|mixed
      */
-    public function execute(string $term)
+    public function execute(?string $term)
     {
         if (empty($term)) {
             return ['results' => []];
