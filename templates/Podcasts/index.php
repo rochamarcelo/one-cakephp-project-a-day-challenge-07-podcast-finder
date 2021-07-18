@@ -14,7 +14,14 @@
         <tr>
             <td><?= $this->Html->image($podcast['artwork_url_100'])?></td>
             <td>
-                <strong><?= h($podcast['collection_name'])?></strong><br/>
+                <strong><?= $this->Html->link(
+                        $podcast['collection_name'],
+                        [
+                            'action' => 'episodes',
+                            $podcast['id'],
+                        ]
+                    )?>
+                </strong><br/>
                 <small><?= h($podcast['artist_name'])?></small>
             </td>
         </tr>
