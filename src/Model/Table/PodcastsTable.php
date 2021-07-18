@@ -42,11 +42,6 @@ class PodcastsTable extends Table
         $this->setTable('podcasts');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
-
-        $this->belongsTo('Collections', [
-            'foreignKey' => 'collection_id',
-            'joinType' => 'INNER',
-        ]);
     }
 
     /**

@@ -12,10 +12,10 @@
 <div>
     <table>
         <tr>
-            <td><?= $this->Html->image($podcast['artworkUrl100'])?></td>
+            <td><?= $this->Html->image($podcast['artwork_url_100'])?></td>
             <td>
-                <strong><?= h($podcast['collectionName'])?></strong><br/>
-                <small><?= h($podcast['artistName'])?></small>
+                <strong><?= h($podcast['collection_name'])?></strong><br/>
+                <small><?= h($podcast['artist_name'])?></small>
             </td>
         </tr>
     </table>
