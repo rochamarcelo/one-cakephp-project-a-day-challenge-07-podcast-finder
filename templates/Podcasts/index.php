@@ -29,7 +29,6 @@
     <hr />
     <?php foreach ($podcastData['results'] as $podcast):
         $url = $this->Url->build(
-            $podcast['collection_name'],
             [
                 'action' => 'episodes',
                 $podcast['id'],
