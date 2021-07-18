@@ -18,6 +18,9 @@ namespace App;
 
 use App\Model\Action\Episodes\ReadFeed;
 use App\Model\Action\Podcasts\Find;
+use App\Webservice\ItunesPodcast;
+use App\Webservice\ItunesPodcastFake;
+use App\Webservice\ItunesPodcastInterface;
 use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
 use Cake\Core\Exception\MissingPluginException;
@@ -118,7 +121,9 @@ class Application extends BaseApplication
      */
     public function services(ContainerInterface $container): void
     {
-        $container->add(Find::class);
+        $container->add(ItunesPodcastInterface::class, ItunesPodcast::class);
+        $container->add(Find::class)
+            ->addArgument(ItunesPodcastInterface::class);
         $container->add(ReadFeed::class);
     }
 

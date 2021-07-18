@@ -5,6 +5,7 @@ namespace App\Model\Action\Podcasts;
 
 
 use App\Webservice\ItunesPodcast;
+use App\Webservice\ItunesPodcastInterface;
 use Cake\Datasource\ModelAwareTrait;
 
 class Find
@@ -15,10 +16,20 @@ class Find
      * @var \Cake\Datasource\RepositoryInterface
      */
     private $Model;
+    /**
+     * @var ItunesPodcastInterface
+     */
+    private $service;
 
-    public function __construct()
+    /**
+     * Find constructor.
+     *
+     * @param \App\Webservice\ItunesPodcastInterface $service
+     */
+    public function __construct(ItunesPodcastInterface $service)
     {
         $this->Model = $this->loadModel('Podcasts');
+        $this->service = $service;
     }
 
     /**
@@ -31,7 +42,7 @@ class Find
             return ['results' => []];
         }
 
-        $response = (new ItunesPodcast())->search($term);
+        $response = $this->service->search($term);
         if (!$response['results']) {
             return $response;
         }

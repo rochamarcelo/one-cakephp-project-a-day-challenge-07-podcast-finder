@@ -9,7 +9,7 @@ use Cake\Http\Client;
  *
  * @package App\Webservice
  */
-class ItunesPodcastFake
+class ItunesPodcastFake implements ItunesPodcastInterface
 {
     /**
      * @param string $term
