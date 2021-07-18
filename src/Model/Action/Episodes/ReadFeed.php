@@ -24,7 +24,7 @@ class ReadFeed
         foreach ($response->channel->item as $item) {
             $items[] = [
                 'title' => (string)$item->title,
-                'description' => (string)$item->description,
+                'description' => strip_tags((string)$item->description),
                 'guid' => (string)$item->guid,
                 'pub_date' => (new Time((string)$item->pubDate)),
                 'url' => (string)$item->enclosure->attributes()->url,
