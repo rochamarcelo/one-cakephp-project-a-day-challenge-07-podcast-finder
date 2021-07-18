@@ -16,6 +16,7 @@
                     'class' => 'input is-info',
                     'placeholder' => __('Search'),
                     'label' => false,
+                    'value' => $this->getRequest()->getQuery('term'),
                 ])?>
             </div>
             <div class="control">
