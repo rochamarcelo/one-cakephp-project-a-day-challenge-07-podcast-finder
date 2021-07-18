@@ -33,6 +33,6 @@ class PodcastsController extends AppController
         $podcast = $this->Podcasts->get($id);
         $episodes = (new ReadFeed())->execute($podcast->feed_url);
 
-        $this->set(compact('episodes'));
+        $this->set(compact('episodes', 'podcast'));
     }
 }
