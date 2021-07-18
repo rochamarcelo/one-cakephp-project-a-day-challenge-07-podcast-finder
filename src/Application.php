@@ -16,6 +16,8 @@ declare(strict_types=1);
  */
 namespace App;
 
+use App\Model\Action\Episodes\ReadFeed;
+use App\Model\Action\Podcasts\Find;
 use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
 use Cake\Core\Exception\MissingPluginException;
@@ -116,6 +118,8 @@ class Application extends BaseApplication
      */
     public function services(ContainerInterface $container): void
     {
+        $container->add(Find::class);
+        $container->add(ReadFeed::class);
     }
 
     /**

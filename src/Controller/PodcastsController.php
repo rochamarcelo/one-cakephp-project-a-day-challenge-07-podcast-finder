@@ -13,25 +13,25 @@ use App\Model\Action\Podcasts\Find;
 class PodcastsController extends AppController
 {
     /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
+     * @param \App\Model\Action\Podcasts\Find $modelAction
+     * @return void
      */
-    public function index()
+    public function index(Find $modelAction)
     {
         $term = $this->request->getQuery('term');
-        $podcastData = (new Find())->execute($term);
+        $podcastData = $modelAction->execute($term);
 
         $this->set(compact('podcastData'));
     }
 
     /**
+     * @param \App\Model\Action\Episodes\ReadFeed $modelAction
      * @param string|null $id Podcast id
      */
-    public function episodes(string $id = null)
+    public function episodes(ReadFeed $modelAction, string $id = null)
     {
         $podcast = $this->Podcasts->get($id);
-        $episodes = (new ReadFeed())->execute($podcast->feed_url);
+        $episodes = $modelAction->execute($podcast->feed_url);
 
         $this->set(compact('episodes', 'podcast'));
     }
