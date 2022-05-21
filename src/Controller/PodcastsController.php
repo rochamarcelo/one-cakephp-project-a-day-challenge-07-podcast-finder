@@ -30,9 +30,12 @@ class PodcastsController extends AppController
      */
     public function episodes(ReadFeed $modelAction, string $id = null)
     {
+        $turboFrameId = $this->request->getHeader('Turbo-Frame')[0] ?? null;
+        if ($turboFrameId) {
+            $this->viewBuilder()->setLayout('turboFrame');
+        }
         $podcast = $this->Podcasts->get($id);
         $episodes = $modelAction->execute($podcast->feed_url);
-
-        $this->set(compact('episodes', 'podcast'));
+        $this->set(compact('episodes', 'podcast', 'turboFrameId'));
     }
 }

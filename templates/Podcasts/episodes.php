@@ -3,8 +3,10 @@
  * @var \App\View\AppView $this
  * @var array $episodes
  * @var \App\Model\Entity\Podcast $podcast
+ * @var string|null $turboFrameId
  */
 ?>
+<?php if (!$turboFrameId):?>
 <section class="hero is-info">
     <div class="hero-body">
         <p class="title">
@@ -19,6 +21,7 @@
         ])?>
     </div>
 </section>
+<?php endif;?>
 <?php foreach ($episodes as $episode):?>
     <div class="card" style="margin-bottom: 10px;">
         <div class="card-content">
@@ -40,4 +43,3 @@
         </footer>
     </div>
 <?php endforeach;?>
-

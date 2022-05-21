@@ -29,6 +29,7 @@
     <?= $this->Form->end()?>
     <hr />
     <?php foreach ($podcastData['results'] as $podcast):
+        $detailsId = "podcast-expand-" . h($podcast['id']);
         $url = $this->Url->build(
             [
                 'action' => 'episodes',
@@ -36,7 +37,7 @@
             ]
         );
     ?>
-    <a class="panel-block" href="<?= $url?>">
+    <a class="panel-block" href="<?= $url?>" data-turbo-frame="<?= $detailsId?>">
         <article class="media">
             <figure class="media-left">
                 <p class="image is-128x128">
@@ -55,5 +56,8 @@
             </div>
         </article>
     </a>
+    <div style="display:block;max-height:50vh;overflow-y: scroll">
+        <turbo-frame id="<?= $detailsId?>"></turbo-frame>
+    </div>
     <?php endforeach;?>
 </article>
